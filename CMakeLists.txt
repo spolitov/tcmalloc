@@ -1,48 +1,50 @@
+cmake_minimum_required(VERSION 3.5)
+
 # It has asm bits
 enable_language (ASM)
 
-set(LIBRARY_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(LIBRARY_DIR "${CMAKE_CURRENT_SOURCE_DIR}/tcmalloc")
 
 set(SRCS
-    ${LIBRARY_DIR}/tcmalloc/arena.cc
-    ${LIBRARY_DIR}/tcmalloc/central_freelist.cc
-    ${LIBRARY_DIR}/tcmalloc/common.cc
-    ${LIBRARY_DIR}/tcmalloc/cpu_cache.cc
-    ${LIBRARY_DIR}/tcmalloc/experiment.cc
-    ${LIBRARY_DIR}/tcmalloc/experimental_4k_size_class.cc
-    ${LIBRARY_DIR}/tcmalloc/experimental_56_size_class.cc
-    ${LIBRARY_DIR}/tcmalloc/guarded_page_allocator.cc
-    ${LIBRARY_DIR}/tcmalloc/huge_address_map.cc
-    ${LIBRARY_DIR}/tcmalloc/huge_allocator.cc
-    ${LIBRARY_DIR}/tcmalloc/huge_cache.cc
-    ${LIBRARY_DIR}/tcmalloc/huge_page_aware_allocator.cc
-    ${LIBRARY_DIR}/tcmalloc/internal/environment.cc
-    ${LIBRARY_DIR}/tcmalloc/internal/logging.cc
-    ${LIBRARY_DIR}/tcmalloc/internal/memory_stats.cc
-    ${LIBRARY_DIR}/tcmalloc/internal/mincore.cc
-    ${LIBRARY_DIR}/tcmalloc/internal/percpu.cc
-    ${LIBRARY_DIR}/tcmalloc/internal/percpu_rseq_asm.S
-    ${LIBRARY_DIR}/tcmalloc/internal/percpu_rseq_unsupported.cc
-    ${LIBRARY_DIR}/tcmalloc/internal/proc_maps.cc
-    ${LIBRARY_DIR}/tcmalloc/internal/util.cc
-    ${LIBRARY_DIR}/tcmalloc/malloc_extension.cc
-    ${LIBRARY_DIR}/tcmalloc/page_allocator.cc
-    ${LIBRARY_DIR}/tcmalloc/page_allocator_interface.cc
-    ${LIBRARY_DIR}/tcmalloc/page_heap.cc
-    ${LIBRARY_DIR}/tcmalloc/pagemap.cc
-    ${LIBRARY_DIR}/tcmalloc/parameters.cc
-    ${LIBRARY_DIR}/tcmalloc/peak_heap_tracker.cc
-    ${LIBRARY_DIR}/tcmalloc/runtime_size_classes.cc
-    ${LIBRARY_DIR}/tcmalloc/sampler.cc
-    ${LIBRARY_DIR}/tcmalloc/size_classes.cc
-    ${LIBRARY_DIR}/tcmalloc/span.cc
-    ${LIBRARY_DIR}/tcmalloc/stack_trace_table.cc
-    ${LIBRARY_DIR}/tcmalloc/static_vars.cc
-    ${LIBRARY_DIR}/tcmalloc/stats.cc
-    ${LIBRARY_DIR}/tcmalloc/system-alloc.cc
-    ${LIBRARY_DIR}/tcmalloc/tcmalloc.cc
-    ${LIBRARY_DIR}/tcmalloc/thread_cache.cc
-    ${LIBRARY_DIR}/tcmalloc/transfer_cache.cc
+    ${LIBRARY_DIR}/arena.cc
+    ${LIBRARY_DIR}/central_freelist.cc
+    ${LIBRARY_DIR}/common.cc
+    ${LIBRARY_DIR}/cpu_cache.cc
+    ${LIBRARY_DIR}/experiment.cc
+    ${LIBRARY_DIR}/experimental_4k_size_class.cc
+    ${LIBRARY_DIR}/experimental_56_size_class.cc
+    ${LIBRARY_DIR}/guarded_page_allocator.cc
+    ${LIBRARY_DIR}/huge_address_map.cc
+    ${LIBRARY_DIR}/huge_allocator.cc
+    ${LIBRARY_DIR}/huge_cache.cc
+    ${LIBRARY_DIR}/huge_page_aware_allocator.cc
+    ${LIBRARY_DIR}/internal/environment.cc
+    ${LIBRARY_DIR}/internal/logging.cc
+    ${LIBRARY_DIR}/internal/memory_stats.cc
+    ${LIBRARY_DIR}/internal/mincore.cc
+    ${LIBRARY_DIR}/internal/percpu.cc
+    ${LIBRARY_DIR}/internal/percpu_rseq_asm.S
+    ${LIBRARY_DIR}/internal/percpu_rseq_unsupported.cc
+    ${LIBRARY_DIR}/internal/proc_maps.cc
+    ${LIBRARY_DIR}/internal/util.cc
+    ${LIBRARY_DIR}/malloc_extension.cc
+    ${LIBRARY_DIR}/page_allocator.cc
+    ${LIBRARY_DIR}/page_allocator_interface.cc
+    ${LIBRARY_DIR}/page_heap.cc
+    ${LIBRARY_DIR}/pagemap.cc
+    ${LIBRARY_DIR}/parameters.cc
+    ${LIBRARY_DIR}/peak_heap_tracker.cc
+    ${LIBRARY_DIR}/runtime_size_classes.cc
+    ${LIBRARY_DIR}/sampler.cc
+    ${LIBRARY_DIR}/size_classes.cc
+    ${LIBRARY_DIR}/span.cc
+    ${LIBRARY_DIR}/stack_trace_table.cc
+    ${LIBRARY_DIR}/static_vars.cc
+    ${LIBRARY_DIR}/stats.cc
+    ${LIBRARY_DIR}/system-alloc.cc
+    ${LIBRARY_DIR}/tcmalloc.cc
+    ${LIBRARY_DIR}/thread_cache.cc
+    ${LIBRARY_DIR}/transfer_cache.cc
 )
 
 add_library(tcmalloc ${SRCS})
@@ -55,8 +57,6 @@ target_link_libraries(
     absl_str_format_internal
     absl_time
 )
-
-target_include_directories(tcmalloc PUBLIC ${LIBRARY_DIR})
 
 set(DEFINITIONS)
 # for RSEQ (restartable sequences) support
