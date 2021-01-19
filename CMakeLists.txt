@@ -56,23 +56,26 @@ target_link_libraries(
     absl_time
 )
 
-target_include_directories (tcmalloc PUBLIC ${LIBRARY_DIR})
+target_include_directories(tcmalloc PUBLIC ${LIBRARY_DIR})
 
 set(DEFINITIONS)
 # for RSEQ (restartable sequences) support
 # define that we have __thread support
-list(APPEND DEFINITIONS -D_GLIBCXX_HAVE_TLS)
+list(APPEND DEFINITIONS _GLIBCXX_HAVE_TLS)
 # increase number of size classes and maximum allocation size that can be
 # satisfied by front-end (i.e. lock-free).
-list(APPEND DEFINITIONS -DTCMALLOC_4M_MAX_SIZE)
-
-list(APPEND DEFINITIONS -Wno-sign-compare)
-list(APPEND DEFINITIONS -Wno-unused-function)
-list(APPEND DEFINITIONS -Wno-unused-variable)
+list(APPEND DEFINITIONS TCMALLOC_4M_MAX_SIZE)
 
 target_compile_definitions(tcmalloc PUBLIC ${DEFINITIONS})
 
+set(OPTIONS)
+list(APPEND OPTIONS -Wno-sign-compare)
+list(APPEND OPTIONS -Wno-unused-function)
+list(APPEND OPTIONS -Wno-unused-variable)
+
+target_compile_options(tcmalloc PUBLIC ${OPTIONS})
+
 set_target_properties(tcmalloc PROPERTIES PUBLIC_HEADER "tcmalloc/malloc_extension.h")
 
-install(TARGETS tcmalloc-cpp
+install(TARGETS tcmalloc
         PUBLIC_HEADER DESTINATION include/tcmalloc)
