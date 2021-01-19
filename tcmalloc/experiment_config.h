@@ -37,6 +37,7 @@ struct ExperimentConfig {
 };
 
 // clang-format off
+#if false
 inline constexpr ExperimentConfig experiments[] = {
     {Experiment::TCMALLOC_TEMERAIRE, "TCMALLOC_TEMERAIRE"},
     {Experiment::TCMALLOC_SANS_56_SIZECLASS, "TCMALLOC_SANS_56_SIZECLASS"},
@@ -46,6 +47,7 @@ inline constexpr ExperimentConfig experiments[] = {
     {Experiment::TCMALLOC_4K_SIZE_CLASS, "TCMALLOC_4K_SIZE_CLASS"},
     {Experiment::TCMALLOC_SKIP_SUBRELEASE_60SEC_V2, "TCMALLOC_SKIP_SUBRELEASE_60SEC_V2"},
 };
+#endif
 // clang-format on
 
 }  // namespace tcmalloc

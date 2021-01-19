@@ -73,10 +73,10 @@ inline constexpr Length BytesToLengthFloor(size_t bytes) {
   return bytes >> kPageShift;
 }
 
-inline constexpr Length kMaxValidPages =
+constexpr Length kMaxValidPages =
     BytesToLengthFloor(~static_cast<Length>(0));
 // For all span-lengths < kMaxPages we keep an exact-size list.
-inline constexpr Length kMaxPages = Length(1 << (20 - kPageShift));
+constexpr Length kMaxPages = Length(1 << (20 - kPageShift));
 
 inline PageId& operator++(PageId& p) {  // NOLINT(runtime/references)
   return p += 1;

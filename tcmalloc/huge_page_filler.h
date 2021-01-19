@@ -346,7 +346,7 @@ class FillerStatsTracker {
     mins.free_backed = std::numeric_limits<size_t>::max();
 
     int64_t num_epochs =
-        std::clamp(w / epoch_length_, int64_t{0}, static_cast<int64_t>(kEpochs));
+        std_clamp(w / epoch_length_, int64_t{0}, static_cast<int64_t>(kEpochs));
 
     tracker_.IterBackwards(
         [&](size_t offset, int64_t ts, const FillerStatsEntry &e) {
@@ -2017,7 +2017,7 @@ inline double HugePageFiller<TrackerType>::hugepage_frac() const {
   const double ret = static_cast<double>(used_on_huge) / denom;
   ASSERT(ret >= 0);
   ASSERT(ret <= 1);
-  return std::clamp<double>(ret, 0, 1);
+  return std_clamp<double>(ret, 0, 1);
 }
 
 // Helper for stat functions.

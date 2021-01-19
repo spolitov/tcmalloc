@@ -70,9 +70,9 @@ void Parameters::set_hpaa_subrelease(bool value) {
 }
 
 ABSL_CONST_INIT std::atomic<MallocExtension::BytesPerSecond>
-    Parameters::background_release_rate_(MallocExtension::BytesPerSecond{
+    Parameters::background_release_rate_(static_cast<MallocExtension::BytesPerSecond>(
         0
-    });
+    ));
 ABSL_CONST_INIT std::atomic<int64_t> Parameters::guarded_sampling_rate_(
     50 * kDefaultProfileSamplingRate);
 ABSL_CONST_INIT std::atomic<bool> Parameters::lazy_per_cpu_caches_enabled_(

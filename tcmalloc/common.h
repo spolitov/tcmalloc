@@ -96,52 +96,52 @@
 #endif
 
 #if TCMALLOC_PAGE_SHIFT == 12
-inline constexpr size_t kPageShift = 12;
-inline constexpr size_t kNumClasses = 46;
-inline constexpr size_t kMaxSize = 8 << 10;
-inline constexpr size_t kMinThreadCacheSize = 4 * 1024;
-inline constexpr size_t kMaxThreadCacheSize = 64 * 1024;
-inline constexpr size_t kMaxCpuCacheSize = 20 * 1024;
-inline constexpr size_t kDefaultOverallThreadCacheSize = kMaxThreadCacheSize;
-inline constexpr size_t kStealAmount = kMinThreadCacheSize;
-inline constexpr size_t kDefaultProfileSamplingRate = 1 << 19;
-inline constexpr size_t kMinPages = 2;
+constexpr size_t kPageShift = 12;
+constexpr size_t kNumClasses = 46;
+constexpr size_t kMaxSize = 8 << 10;
+constexpr size_t kMinThreadCacheSize = 4 * 1024;
+constexpr size_t kMaxThreadCacheSize = 64 * 1024;
+constexpr size_t kMaxCpuCacheSize = 20 * 1024;
+constexpr size_t kDefaultOverallThreadCacheSize = kMaxThreadCacheSize;
+constexpr size_t kStealAmount = kMinThreadCacheSize;
+constexpr size_t kDefaultProfileSamplingRate = 1 << 19;
+constexpr size_t kMinPages = 2;
 #elif TCMALLOC_PAGE_SHIFT == 15
-inline constexpr size_t kPageShift = 15;
-inline constexpr size_t kNumClasses = 78;
-inline constexpr size_t kMaxSize = 256 * 1024;
-inline constexpr size_t kMinThreadCacheSize = kMaxSize * 2;
-inline constexpr size_t kMaxThreadCacheSize = 4 << 20;
-inline constexpr size_t kMaxCpuCacheSize = 3 * 1024 * 1024;
-inline constexpr size_t kDefaultOverallThreadCacheSize =
+constexpr size_t kPageShift = 15;
+constexpr size_t kNumClasses = 78;
+constexpr size_t kMaxSize = 256 * 1024;
+constexpr size_t kMinThreadCacheSize = kMaxSize * 2;
+constexpr size_t kMaxThreadCacheSize = 4 << 20;
+constexpr size_t kMaxCpuCacheSize = 3 * 1024 * 1024;
+constexpr size_t kDefaultOverallThreadCacheSize =
     8u * kMaxThreadCacheSize;
-inline constexpr size_t kStealAmount = 1 << 16;
-inline constexpr size_t kDefaultProfileSamplingRate = 1 << 21;
-inline constexpr size_t kMinPages = 8;
+constexpr size_t kStealAmount = 1 << 16;
+constexpr size_t kDefaultProfileSamplingRate = 1 << 21;
+constexpr size_t kMinPages = 8;
 #elif TCMALLOC_PAGE_SHIFT == 18
-inline constexpr size_t kPageShift = 18;
-inline constexpr size_t kNumClasses = 89;
-inline constexpr size_t kMaxSize = 256 * 1024;
-inline constexpr size_t kMinThreadCacheSize = kMaxSize * 2;
-inline constexpr size_t kMaxThreadCacheSize = 4 << 20;
-inline constexpr size_t kMaxCpuCacheSize = 3 * 1024 * 1024;
-inline constexpr size_t kDefaultOverallThreadCacheSize =
+constexpr size_t kPageShift = 18;
+constexpr size_t kNumClasses = 89;
+constexpr size_t kMaxSize = 256 * 1024;
+constexpr size_t kMinThreadCacheSize = kMaxSize * 2;
+constexpr size_t kMaxThreadCacheSize = 4 << 20;
+constexpr size_t kMaxCpuCacheSize = 3 * 1024 * 1024;
+constexpr size_t kDefaultOverallThreadCacheSize =
     8u * kMaxThreadCacheSize;
-inline constexpr size_t kStealAmount = 1 << 16;
-inline constexpr size_t kDefaultProfileSamplingRate = 1 << 21;
-inline constexpr size_t kMinPages = 8;
+constexpr size_t kStealAmount = 1 << 16;
+constexpr size_t kDefaultProfileSamplingRate = 1 << 21;
+constexpr size_t kMinPages = 8;
 #elif TCMALLOC_PAGE_SHIFT == 13
-inline constexpr size_t kPageShift = 13;
-inline constexpr size_t kNumClasses = 86;
-inline constexpr size_t kMaxSize = 256 * 1024;
-inline constexpr size_t kMinThreadCacheSize = kMaxSize * 2;
-inline constexpr size_t kMaxThreadCacheSize = 4 << 20;
-inline constexpr size_t kMaxCpuCacheSize = 3 * 1024 * 1024;
-inline constexpr size_t kDefaultOverallThreadCacheSize =
+constexpr size_t kPageShift = 13;
+constexpr size_t kNumClasses = 86;
+constexpr size_t kMaxSize = 256 * 1024;
+constexpr size_t kMinThreadCacheSize = kMaxSize * 2;
+constexpr size_t kMaxThreadCacheSize = 4 << 20;
+constexpr size_t kMaxCpuCacheSize = 3 * 1024 * 1024;
+constexpr size_t kDefaultOverallThreadCacheSize =
     8u * kMaxThreadCacheSize;
-inline constexpr size_t kStealAmount = 1 << 16;
-inline constexpr size_t kDefaultProfileSamplingRate = 1 << 21;
-inline constexpr size_t kMinPages = 8;
+constexpr size_t kStealAmount = 1 << 16;
+constexpr size_t kDefaultProfileSamplingRate = 1 << 21;
+constexpr size_t kMinPages = 8;
 #else
 #error "Unsupported TCMALLOC_PAGE_SHIFT value!"
 #endif
@@ -149,10 +149,10 @@ inline constexpr size_t kMinPages = 8;
 // Minimum/maximum number of batches in TransferCache per size class.
 // Actual numbers depends on a number of factors, see TransferCache::Init
 // for details.
-inline constexpr size_t kMinObjectsToMove = 2;
-inline constexpr size_t kMaxObjectsToMove = 128;
+constexpr size_t kMinObjectsToMove = 2;
+constexpr size_t kMaxObjectsToMove = 128;
 
-inline constexpr size_t kPageSize = 1 << kPageShift;
+constexpr size_t kPageSize = 1 << kPageShift;
 // Verify that the page size used is at least 8x smaller than the maximum
 // element size in the thread cache.  This guarantees at most 12.5% internal
 // fragmentation (1/8). When page size is 256k (kPageShift == 18), the benefit
@@ -166,21 +166,21 @@ inline constexpr size_t kPageSize = 1 << kPageShift;
 static_assert((kMaxSize / kPageSize) >= kMinPages || kPageShift >= 18,
               "Ratio of kMaxSize / kPageSize is too small");
 
-inline constexpr size_t kAlignment = 8;
+constexpr size_t kAlignment = 8;
 // log2 (kAlignment)
-inline constexpr size_t kAlignmentShift =
+constexpr size_t kAlignmentShift =
     tcmalloc::tcmalloc_internal::Bits::Log2Ceiling(kAlignment);
 
 // The number of times that a deallocation can cause a freelist to
 // go over its max_length() before shrinking max_length().
-inline constexpr int kMaxOverages = 3;
+constexpr int kMaxOverages = 3;
 
 // Maximum length we allow a per-thread free-list to have before we
 // move objects from it into the corresponding central free-list.  We
 // want this big to avoid locking the central free-list too often.  It
 // should not hurt to make this list somewhat big because the
 // scavenging code will shrink it down when its contents are not in use.
-inline constexpr int kMaxDynamicFreeListLength = 8192;
+constexpr int kMaxDynamicFreeListLength = 8192;
 
 #if defined __x86_64__
 // All current and planned x86_64 processors only look at the lower 48 bits
@@ -188,39 +188,39 @@ inline constexpr int kMaxDynamicFreeListLength = 8192;
 // TODO(b/134686025): Under what operating systems can we increase it safely to
 // 17? This lets us use smaller page maps.  On first allocation, a 36-bit page
 // map uses only 96 KB instead of the 4.5 MB used by a 52-bit page map.
-inline constexpr int kAddressBits =
+constexpr int kAddressBits =
     (sizeof(void*) < 8 ? (8 * sizeof(void*)) : 48);
 #elif defined __powerpc64__ && defined __linux__
 // Linux(4.12 and above) on powerpc64 supports 128TB user virtual address space
 // by default, and up to 512TB if user space opts in by specifing hint in mmap.
 // See comments in arch/powerpc/include/asm/processor.h
 // and arch/powerpc/mm/mmap.c.
-inline constexpr int kAddressBits =
+constexpr int kAddressBits =
     (sizeof(void*) < 8 ? (8 * sizeof(void*)) : 49);
 #elif defined __aarch64__ && defined __linux__
 // According to Documentation/arm64/memory.txt of kernel 3.16,
 // AARCH64 kernel supports 48-bit virtual addresses for both user and kernel.
-inline constexpr int kAddressBits =
+constexpr int kAddressBits =
     (sizeof(void*) < 8 ? (8 * sizeof(void*)) : 48);
 #else
-inline constexpr int kAddressBits = 8 * sizeof(void*);
+constexpr int kAddressBits = 8 * sizeof(void*);
 #endif
 
 namespace tcmalloc {
-inline constexpr uintptr_t kTagMask = uintptr_t{1}
+constexpr uintptr_t kTagMask = uintptr_t{1}
                                       << std::min(kAddressBits - 4, 42);
 
 #if !defined(TCMALLOC_SMALL_BUT_SLOW) && __WORDSIZE != 32
 // Always allocate at least a huge page
-inline constexpr size_t kMinSystemAlloc = kHugePageSize;
-inline constexpr size_t kMinMmapAlloc = 1 << 30;  // mmap() in 1GiB ranges.
+constexpr size_t kMinSystemAlloc = kHugePageSize;
+constexpr size_t kMinMmapAlloc = 1 << 30;  // mmap() in 1GiB ranges.
 #else
 // Allocate in units of 2MiB. This is the size of a huge page for x86, but
 // not for Power.
-inline constexpr size_t kMinSystemAlloc = 2 << 20;
+constexpr size_t kMinSystemAlloc = 2 << 20;
 // mmap() in units of 32MiB. This is a multiple of huge page size for
 // both x86 (2MiB) and Power (16MiB)
-inline constexpr size_t kMinMmapAlloc = 32 << 20;
+constexpr size_t kMinMmapAlloc = 32 << 20;
 #endif
 
 static_assert(kMinMmapAlloc % kMinSystemAlloc == 0,
@@ -427,6 +427,11 @@ class SizeMap {
 
 // Linker initialized, so this lock can be accessed at any time.
 extern absl::base_internal::SpinLock pageheap_lock;
+
+template<class T>
+const T& std_clamp( const T& v, const T& lo, const T& hi ) {
+    return (v < lo) ? lo : (hi < v) ? hi : v;
+}
 
 }  // namespace tcmalloc
 

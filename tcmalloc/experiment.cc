@@ -27,6 +27,16 @@ using tcmalloc::tcmalloc_internal::thread_safe_getenv;
 namespace tcmalloc {
 namespace {
 
+constexpr ExperimentConfig experiments[] = {
+    {Experiment::TCMALLOC_TEMERAIRE, "TCMALLOC_TEMERAIRE"},
+    {Experiment::TCMALLOC_SANS_56_SIZECLASS, "TCMALLOC_SANS_56_SIZECLASS"},
+    {Experiment::TCMALLOC_ARBITRARY_TRANSFER_CACHE, "TCMALLOC_ARBITRARY_TRANSFER_CACHE"},
+    {Experiment::TCMALLOC_LOCK_FREE_TRANSFER_CACHE, "TCMALLOC_LOCK_FREE_TRANSFER_CACHE"},
+    {Experiment::TCMALLOC_LARGE_NUM_TO_MOVE, "TCMALLOC_LARGE_NUM_TO_MOVE"},
+    {Experiment::TCMALLOC_4K_SIZE_CLASS, "TCMALLOC_4K_SIZE_CLASS"},
+    {Experiment::TCMALLOC_SKIP_SUBRELEASE_60SEC_V2, "TCMALLOC_SKIP_SUBRELEASE_60SEC_V2"},
+};
+
 const char kDelimiter = ',';
 const char kExperiments[] = "BORG_EXPERIMENTS";
 const char kDisableExperiments[] = "BORG_DISABLE_EXPERIMENTS";

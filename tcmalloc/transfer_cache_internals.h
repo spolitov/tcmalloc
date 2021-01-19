@@ -43,7 +43,7 @@
 #include "tcmalloc/tracking.h"
 #include "tcmalloc/transfer_cache_stats.h"
 
-namespace tcmalloc::internal_transfer_cache {
+namespace tcmalloc { namespace internal_transfer_cache {
 
 struct alignas(8) SizeInfo {
   int32_t used;
@@ -793,6 +793,6 @@ class LockFreeTransferCache {
   alignas(ABSL_CACHELINE_SIZE) std::atomic<int32_t> tail_committed_;
 } ABSL_CACHELINE_ALIGNED;
 
-}  // namespace tcmalloc::internal_transfer_cache
+} }  // namespace tcmalloc::internal_transfer_cache
 
 #endif  // TCMALLOC_TRANSFER_CACHE_INTERNAL_H_

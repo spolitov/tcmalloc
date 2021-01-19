@@ -43,9 +43,11 @@ IntType* CastToIntegral(std::atomic<IntType>* atomic_for_syscall) {
   static_assert(std::atomic<IntType>::is_always_lock_free,
                 "CastToIntegral must be instantiated with a lock-free type.");
 #else
+#if false
   static_assert(__atomic_always_lock_free(sizeof(IntType),
                                           nullptr /* typical alignment */),
                 "CastToIntegral must be instantiated with a lock-free type.");
+#endif
 #endif
   return reinterpret_cast<IntType*>(atomic_for_syscall);
 }
